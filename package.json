@@ -1,0 +1,16 @@
+{
+  "name": "anime",
+  "packageManager": "yarn@4.3.1",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "anime": "^0.1.2",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0",
+    "nodemon": "^3.1.7"
+  }
+}

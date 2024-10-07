@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= anime.title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+        /* Nền với hiệu ứng gradient */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1727095150565-164755321a33?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header với shadow và kiểu chữ đẹp */
+        header {
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3 {
+            margin-top: -20px;
+            font-weight: bold;
+        }
+
+        /* Tiêu đề anime với kiểu chữ trang nhã */
+        .anime-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        /* Điều chỉnh các liên kết của menu */
+        nav a {
+            font-size: 1.2rem;
+            color: #ffc107;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        /* Căn chỉnh và bố cục chính */
+        main {
+            flex-grow: 1;
+            padding: 50px 0;
+        }
+
+        /* Thông tin anime với kiểu chữ lớn và đẹp */
+        .anime-description {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #5e5c5c;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Phần video với viền và căn chỉnh */
+        iframe {
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Chân trang tối giản nhưng ấn tượng */
+        .footer {
+            color: white;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer p {
+            margin: 0;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <header class="text-center">
+        <h1 class="anime-title"><%= anime.title %></h1>
+        <nav>
+            <a href="/" class="text-light">Home</a>
+            <a href="/anime" class="text-light">Anime List</a>
+        </nav>
+    </header>
+
+    <main class="container text-center">
+        <h2>Thông tin</h2>
+        <p class="anime-description"><%= anime.description %></p>
+        <h3>Video</h3>
+        <iframe width="100%" height="700" src="<%= anime.videoUrl %>" frameborder="0" allowfullscreen></iframe>
+    </main>
+
+    <footer class="footer text-center">
+        <p>&copy; 2024 Nino Idol</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

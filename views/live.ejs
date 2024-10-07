@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stream Nimo TV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #fff;
+        }
+
+        .header {
+            background-color: #1f1f1f;
+            padding: 15px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            color: #00aaff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-btn {
+           
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-right: 15px;
+        }
+
+        .back-btn:hover {
+            background-color: #0088cc;
+        }
+
+        .live-video {
+            background-color: #333;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-container {
+            background-color: #222;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-header {
+            background-color: #333;
+            padding: 15px;
+            font-weight: bold;
+            text-align: center;
+            color: #00aaff;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .chat-messages {
+            padding: 15px;
+            overflow-y: auto;
+            font-size: 14px;
+            color: #b3b3b3;
+            height: 300px; /* Height of chat area */
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background-color: #333;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            background-color: #444;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .chat-input button {
+            background-color: #00aaff;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .chat-input button:hover {
+            background-color: #0088cc;
+        }
+
+        .streamer-list {
+            padding: 15px;
+        }
+
+        .streamer-item {
+    background-color: #444;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+.streamer-item:hover {
+    background-color: #555; 
+    transform: scale(1.02); 
+}
+
+.streamer-item:active {
+    background-color: #666; 
+    transform: scale(0.98); 
+    transition: background-color 0.1s, transform 0.1s; 
+    
+}
+
+        .streamer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .footer {
+            background-color: #1f1f1f;
+            padding: 10px;
+            text-align: center;
+            color: #b3b3b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header d-flex justify-content-between align-items-center">
+        <a href="/game" class="back-btn bg-dark">← Về trang chủ</a>
+        <span>Nimo Live Stream</span>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Video stream area -->
+                <div class="live-video mb-3">
+                    <!-- Tên của người phát livestream -->
+                    <div class="streamer-name text-center text-info" style="font-size: 20px; font-weight: bold;">
+                        Tên Streamer: Garena Lien Quan Mobile
+                    </div>
+                    <iframe 
+                        width="100%" 
+                        height="800px" 
+                        src="https://www.youtube.com/embed/SxqIqYASSc4" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                
+
+                <!-- Chat area -->
+                <div class="chat-container">
+                    <div class="chat-header">Chat</div>
+                    <div class="chat-messages" id="chat-messages">
+                        <p><strong>Người dùng 1:</strong> Xin chào!</p>
+                        <p><strong>Người dùng 2:</strong> Livestream tuyệt quá!</p>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chat-input" placeholder="Nhập tin nhắn...">
+                        <button id="send-btn">Gửi</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <h4 class="text-center text-info">Streamer Nổi Bật</h4>
+                <div class="streamer-list">
+                    <div class="streamer-item" data-stream-url="https://www.youtube.com/embed/SxqIqYASSc4">
+                        <img src="https://via.placeholder.com/50" alt="Streamer" class="streamer-avatar">
+                        <div>
+                            <strong>Streamer 1</strong>
+                            <p>500k người theo dõi</p>
+                        </div>
+                    </div>
+                    <div class="streamer-item" data-stream-url="https://www.youtube.com/embed/tgbNymZ7vqY">
+                        <img src="https://via.placeholder.com/50" alt="Streamer" class="streamer-avatar">
+                        <div>
+                            <strong>Streamer 2</strong>
+                            <p>300k người theo dõi</p>
+                        </div>
+                    </div>
+                    <div class="streamer-item" data-stream-url="https://www.youtube.com/embed/anotherVideoUrl">
+                        <img src="https://via.placeholder.com/50" alt="Streamer" class="streamer-avatar">
+                        <div>
+                            <strong>Streamer 3</strong>
+                            <p>250k người theo dõi</p>
+                        </div>
+                    </div>
+                    <!-- ... -->
+                    
+                    <div class="streamer-item" data-stream-url="https://www.youtube.com/embed/anotherVideoUrl">
+                        <img src="https://via.placeholder.com/50" alt="Streamer" class="streamer-avatar">
+                        <div>
+                            <strong>Streamer 3</strong>
+                            <p>20k người theo dõi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Nimo Live Stream. All rights reserved.</p>
+    </div>
+
+    <script>
+        // Lấy tất cả các phần tử streamer
+        const streamerItems = document.querySelectorAll('.streamer-item');
+        const liveVideoIframe = document.querySelector('.live-video iframe');
+        const streamerName = document.querySelector('.streamer-name');
+    
+        // Lặp qua từng phần tử và gán sự kiện click
+        streamerItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                const streamUrl = item.getAttribute('data-stream-url');
+                const streamerNameText = item.querySelector('strong').textContent;
+    
+                // Cập nhật URL của iframe để thay đổi video
+                liveVideoIframe.src = streamUrl;
+    
+                // Cập nhật tên của streamer
+                streamerName.textContent = `Tên Streamer: ${streamerNameText}`;
+            });
+        });
+    </script>
+    
+</body>
+</html>

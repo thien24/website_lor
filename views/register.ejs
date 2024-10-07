@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Anh banh Idol</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700604345.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-container {
+            width: 600px;
+            padding: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            text-align: center;
+        }
+
+        .register-container h1 {
+            color: white;
+            margin-bottom: 40px;
+            font-weight: 600;
+            font-size: 32px;
+        }
+
+        .register-container .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .register-container .form-group input {
+            width: 100%;
+            padding: 15px 50px;
+            border-radius: 30px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 18px;
+            outline: none;
+        }
+
+        .register-container .form-group i {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 20px;
+        }
+
+        .register-container .btn {
+            width: 100%;
+            border-radius: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .register-container .btn:hover {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .register-container .options {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .register-container .options a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .register-container .options a:hover {
+            text-decoration: underline;
+        }
+
+        .register-container p {
+            color: white;
+            margin-top: 30px;
+            font-size: 16px;
+        }
+
+        footer {
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h1>Register tai khoan</h1>
+        <form action="/register" method="POST">
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+        <p>Already have an account? <a href="/login">Dang nhap tai day.</a></p>
+    </div>
+
+    <footer class="text-center">
+        <p>&copy; 2024 Website lor</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

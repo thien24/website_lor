@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            margin: 0;
+            padding: 20px;
+            color: #fff;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .game-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Xếp 3 game trên mỗi hàng */
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .game-item {
+            background: #1c1c1c;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .game-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-item img {
+            width: 100%;
+            height: 250px; /* Chiều cao đặt thành 250px */
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 10px;
+        }
+
+        .game-info h2 {
+            margin: 0 0 10px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .game-info p {
+            margin: 5px 0;
+            color: #b3b3b3;
+            font-size: 14px;
+        }
+
+        .game-info .price {
+            font-weight: bold;
+            color: #ff4f4f;
+        }
+
+        .bought-button {
+            background-color: #676a6d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .bought-button:hover {
+            background-color: #758ea8;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 100%;
+            background-color: #1f1f1f;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .sidebar img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .sidebar img:hover {
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="/"><img src="https://img.icons8.com/material-outlined/48/ffffff/home--v2.png" alt="Home"></a> <!-- Link đến trang index -->
+        <a href="/games"><img src="https://img.icons8.com/material-outlined/48/ffffff/controller.png" alt="Games"></a> <!-- Link đến trang games -->
+        <a href="/live"><img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-live.png" alt="Live"></a> <!-- Link đến trang live -->
+        <a href="/login"><img src="https://img.icons8.com/material-outlined/48/ffffff/user.png" alt="Profile"></a> <!-- Link đến trang login -->
+    </div>
+
+    <h1>Danh sách trò chơi</h1>
+    <div class="game-list">
+        <% games.forEach(game => { %>
+            <div class="game-item">
+                <img src="<%= game.imageUrl %>" alt="<%= game.title %>">
+                <div class="game-info">
+                    <h2><%= game.title %></h2>
+                    <p><%= game.description %></p>
+                    <p class="price">Giá: <%= game.price %> VNĐ</p>
+                    <button class="bought-button" data-game="<%= game.title %>">Mua Game</button>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.bought-button').click(function() {
+                const gameName = $(this).data('game'); // Lấy tên game từ thuộc tính data
+                $.post('/bought-game', { gameName }, function(response) {
+                    alert(response);
+                }).fail(function(jqXHR) {
+                    alert('Có lỗi xảy ra: ' + jqXHR.responseText);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
